@@ -1407,7 +1407,7 @@ ReturnStatement(path) {
 > 
 > ### <a id="toc-replacing-a-node-with-a-source-string"></a>用字符串源码替换节点
 > 
-> ```js
+```js
 FunctionDeclaration(path) {
   path.replaceWithSourceString(`function add(a, b) {
     return a + b;
@@ -1427,7 +1427,7 @@ FunctionDeclaration(path) {
 > 
 > ### <a id="toc-inserting-a-sibling-node"></a>插入兄弟节点
 > 
-> ```js
+```js
 FunctionDeclaration(path) {
   path.insertBefore(t.expressionStatement(t.stringLiteral("Because I'm easy come, easy go.")));
   path.insertAfter(t.expressionStatement(t.stringLiteral("A little high, little low.")));
@@ -1449,7 +1449,7 @@ FunctionDeclaration(path) {
 > 如果您想要在AST节点属性中插入一个像` body </ 0>那样的数组。
 它与 <code> insertBefore `/` insertAfter ` 类似, 但您必须指定 ` listKey ` (通常是 ` 正文 `).
 > 
-> ```js
+```js
 ClassMethod(path) {
   path.get('body').unshiftContainer('body', t.expressionStatement(t.stringLiteral('before')));
   path.get('body').pushContainer('body', t.expressionStatement(t.stringLiteral('after')));
@@ -1482,14 +1482,14 @@ FunctionDeclaration(path) {
 
 ### <a id="toc-replacing-a-parent"></a>替换父节点
 
-只需使用parentPath：` path.parentPath </>调用<code> replaceWith </>即可</p>
+只需使用parentPath：` path.parentPath </>调用<code> replaceWith </>即可</p>`
 
 <pre><code class="js">BinaryExpression(path) {
   path.parentPath.replaceWith(
     t.expressionStatement(t.stringLiteral("Anyway the wind blows, doesn't really matter to me, to me."))
   );
 }
-`</pre> 
+</pre> 
 
 ```diff
   function square(n) {
@@ -1551,14 +1551,14 @@ FunctionDeclaration(path) {
 
 ### <a id="toc-pushing-a-variable-declaration-to-a-parent-scope"></a>提升变量声明至父级作用域
 
-有时你可能想要推送一个` VariableDeclaration </>，这样你就可以分配给它。</p>
+有时你可能想要推送一个` VariableDeclaration </>`，这样你就可以分配给它。
 
 <pre><code class="js">FunctionDeclaration(path) {
   const id = path.scope.generateUidIdentifierBasedOnNode(path.node.id);
   path.remove();
   path.scope.parent.push({ id, init: path.node });
 }
-`</pre> 
+</pre> 
 
 ```diff
 - function square(n) {
@@ -1617,7 +1617,7 @@ FunctionDeclaration(path) {
 }
 ```
 
-这些选项会通过`状态</>对象传递给插件访问者：</p>
+这些选项会通过`状态</>对象传递给插件访问者：`
 
 <pre><code class="js">export default function({ types: t }) {
   return {
@@ -1629,7 +1629,7 @@ FunctionDeclaration(path) {
     }
   }
 }
-`</pre> 
+</pre> 
 
 这些选项是特定于插件的，您不能访问其他插件中的选项。
 
@@ -1699,9 +1699,9 @@ export default function({ types: t }) {
 
 # <a id="toc-building-nodes"></a>构建节点
 
-编写转换时，通常需要构建一些要插入的节点进入AST。 如前所述，您可以使用` babel-types </>包中的<a href="#builders">builder </>方法。</p>
+<p>编写转换时，通常需要构建一些要插入的节点进入AST。 如前所述，您可以使用` babel-types </>`包中的<a href="#builders">builder </>方法。</p>
 
-<p>构建器的方法名称就是您想要的节点类型的名称，除了第一个字母小写。 例如，如果您想建立一个<code> MemberExpression </>您可以使用<code> t.memberExpression（...）</>.</p>
+<p>构建器的方法名称就是您想要的节点类型的名称，除了第一个字母小写。 例如，如果您想建立一个<code> MemberExpression </code>您可以使用<code> t.memberExpression（...）</code>.</p>
 
 <p>这些构建器的参数由节点定义决定。 有一些正在做的工作，以生成易于阅读的文件定义，但现在他们都可以在<a href="https://github.com/babel/babel/tree/master/packages/babel-types/src/definitions">此处</a>找到。.</p>
 
@@ -1726,7 +1726,7 @@ export default function({ types: t }) {
     }
   }
 });
-`</pre> 
+</pre> 
 
 在这里你可以看到关于这个特定节点类型的所有信息，包括如何构建它，遍历它，并验证它。
 
